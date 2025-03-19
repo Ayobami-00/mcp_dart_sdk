@@ -7,6 +7,8 @@ import '../base/lifecycle.dart';
 import '../base/session.dart';
 import '../base/types.dart';
 import '../shared/exceptions.dart';
+import 'capabilities/roots.dart';
+import 'capabilities/sampling.dart';
 import 'session.dart';
 
 /// The main client class for the MCP protocol.
@@ -26,6 +28,13 @@ class McpClient {
   /// Whether the client is initialized.
   bool get isInitialized => _session?.state == SessionState.initialized;
 
+  /// The current client session.
+  ///
+  /// This is exposed for capability extensions to access.
+  ///
+  /// Note: This is intended for internal use by capability extensions.
+  ClientSession? get session => _session;
+
   /// Creates a new [McpClient] instance.
   McpClient();
 
@@ -40,15 +49,28 @@ class McpClient {
   }
 
   /// Initializes the session with the server.
+  ///
+  /// You can provide specific capability implementations using the [rootsCapability]
+  /// and [samplingCapability] parameters, or create a custom [ClientCapabilities]
+  /// instance directly.
   Future<ServerCapabilities> initialize({
     required ClientInfo clientInfo,
-    required ClientCapabilities capabilities,
+    ClientCapabilities? capabilities,
+    RootsCapability? rootsCapability,
+    SamplingCapability? samplingCapability,
   }) async {
     _checkConnected();
 
+    // Use either the provided capabilities or create from individual capabilities
+    final clientCapabilities = capabilities ??
+        ClientCapabilities.withCapabilities(
+          rootsCapability: rootsCapability,
+          samplingCapability: samplingCapability,
+        );
+
     final result = await _session!.initialize(
       clientInfo: clientInfo,
-      capabilities: capabilities,
+      capabilities: clientCapabilities,
     );
 
     return result.capabilities;

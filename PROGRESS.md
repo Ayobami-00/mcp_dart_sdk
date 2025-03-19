@@ -25,28 +25,31 @@
 - [x] Implemented HttpSseTransport
 - [x] Implemented WebSocketTransport
 
+### Client Capabilities Implementation
+- [x] Implement roots capability
+- [x] Implement sampling capability
+
+### Server Implementation
+- [x] Implement server session
+- [x] Implement main server class
+- [x] Implement StdioTransport for server
+- [x] Implement HttpSseTransport for server
+- [x] Implement WebSocketTransport for server
+
 ### Documentation
 - [x] Created README with examples
 - [x] Added API documentation to core classes
 
 ### Examples
 - [x] Created client example
+- [x] Created in-memory example with simple server implementation
+- [x] Created server example
 
 ### Testing
 - [x] Created client tests
+- [x] Created capability tests
 
 ## In Progress
-
-### Client Capabilities Implementation
-- [ ] Implement roots capability
-- [ ] Implement sampling capability
-
-### Server Implementation
-- [ ] Implement server session
-- [ ] Implement main server class
-- [ ] Implement StdioTransport for server
-- [ ] Implement HttpSseTransport for server
-- [ ] Implement WebSocketTransport for server
 
 ### Server Capabilities Implementation
 - [ ] Implement resources capability
@@ -65,20 +68,16 @@
 - [ ] Create server tests
 - [ ] Create integration tests
 - [ ] Create transport tests
-- [ ] Create capability tests
 
 ### Examples
-- [ ] Create server example
 - [ ] Create Flutter integration example
 
 ## Next Steps
-1. Implement client capabilities (roots, sampling)
-2. Implement server session and main server class
-3. Implement server capabilities (resources, tools, prompts, logging)
-4. Implement protocol utilities
-5. Add comprehensive tests
-6. Create more examples
-7. Generate JSON serialization code
+1. Implement server capabilities (resources, tools, prompts, logging)
+2. Implement protocol utilities
+3. Add comprehensive tests
+4. Create more examples
+5. Generate JSON serialization code
 
 ## Known Issues
 - Missing build_runner generated code (types.g.dart, json_rpc.g.dart, etc.)
