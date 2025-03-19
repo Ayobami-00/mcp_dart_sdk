@@ -59,6 +59,8 @@ ServerCapabilities _$ServerCapabilitiesFromJson(Map<String, dynamic> json) =>
       resources: json['resources'] as Map<String, dynamic>?,
       tools: json['tools'] as Map<String, dynamic>?,
       logging: json['logging'] as Map<String, dynamic>?,
+      roots: json['roots'] as Map<String, dynamic>?,
+      sampling: json['sampling'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$ServerCapabilitiesToJson(ServerCapabilities instance) =>
@@ -67,6 +69,8 @@ Map<String, dynamic> _$ServerCapabilitiesToJson(ServerCapabilities instance) =>
       'resources': instance.resources,
       'tools': instance.tools,
       'logging': instance.logging,
+      'roots': instance.roots,
+      'sampling': instance.sampling,
     };
 
 Uri _$UriFromJson(Map<String, dynamic> json) => Uri(

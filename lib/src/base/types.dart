@@ -119,6 +119,13 @@ class ClientCapabilities {
   /// Creates a new [ClientCapabilities] instance.
   ClientCapabilities({this.roots, this.sampling});
 
+  /// Creates a [ClientCapabilities] with specified capability instances.
+  ClientCapabilities.withCapabilities({
+    ClientCapability? rootsCapability,
+    ClientCapability? samplingCapability,
+  })  : roots = rootsCapability?.toJson(),
+        sampling = samplingCapability?.toJson();
+
   /// Creates a [ClientCapabilities] from JSON.
   factory ClientCapabilities.fromJson(Map<String, dynamic> json) =>
       _$ClientCapabilitiesFromJson(json);
@@ -148,8 +155,21 @@ class ServerCapabilities {
   /// The logging capability for sending log messages.
   final Map<String, dynamic>? logging;
 
+  /// The roots capability for managing root directories.
+  final Map<String, dynamic>? roots;
+
+  /// The sampling capability for intermediate model outputs.
+  final Map<String, dynamic>? sampling;
+
   /// Creates a new [ServerCapabilities] instance.
-  ServerCapabilities({this.prompts, this.resources, this.tools, this.logging});
+  ServerCapabilities({
+    this.prompts,
+    this.resources,
+    this.tools,
+    this.logging,
+    this.roots,
+    this.sampling,
+  });
 
   /// Creates a [ServerCapabilities] from JSON.
   factory ServerCapabilities.fromJson(Map<String, dynamic> json) =>

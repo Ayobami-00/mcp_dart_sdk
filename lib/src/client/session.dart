@@ -110,6 +110,10 @@ class ClientSession extends BaseSession {
         return serverCapabilities!.tools != null;
       case 'logging':
         return serverCapabilities!.logging != null;
+      case 'roots':
+        return serverCapabilities!.roots != null;
+      case 'sampling':
+        return serverCapabilities!.sampling != null;
       default:
         return false;
     }
